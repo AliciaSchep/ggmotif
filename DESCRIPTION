@@ -1,0 +1,15 @@
+Package: ggmotif
+Type: Package
+Title: ggmotif
+Version: 0.0.0
+Date: 2016-02-11
+Authors@R: c(
+  person("Alicia", "Schep", email = "aschep@stanford.edu", role = c("aut","cre")),
+  person("Stanford University", role = "cph"))
+Description: Plot motifs using ggplot framework.  Add motifs to a ggplot.
+License: MIT + file LICENSE
+Imports:
+  Biostrings,
+  RColorBrewer
+Depends:
+  ggplot2
