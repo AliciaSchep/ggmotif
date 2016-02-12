@@ -48,6 +48,7 @@ Or add a sequence logo at a specific position with a specific size into a ggplot
 ggplot(data.frame(x = 1:5,y =1:5),aes(x=x,y=y)) + geom_line() + 
   ggmotif("ACGWRT", x.pos = 5.1, y.pos = 5.1, ht = 0.2, wt = 0.2) + 
   ggmotif_scale() 
+
 ```
 
 ![](README-example_ggmotif-1.png)
