@@ -9,14 +9,16 @@ matrixToPolygons <- function(x,
                              wt = 1,
                              id = ""){
   stopifnot(ncol(x) >= 1)
-  x = convert_ambiguous_matrix(x)
+  if (nrow(x) > 4){
+    x = convert_ambiguous_matrix(x)
+  }
   letters = rownames(x)
   out = data.frame(x = NULL, y = NULL, id = NULL, fill = NULL, stringsAsFactors = FALSE)
   for (i in 1:ncol(x)){
-    nz = which(x[,i]>0)
-    tmpy = 0
+    nz = which(x[,i]!=0)
+    tmpy = -sum(abs(x[which(x[,i]<0),i]))
     for (j in nz[sort(x[nz,i], index.return=T)$ix]){
-      tmpht = ht * x[j,i]
+      tmpht = ht * abs(x[j,i])
       out = rbind(out, makeLetter(letters[j],
                                   x.pos= x.pos + (i - 0.5) * wt,
                                   y.pos = y.pos + tmpy,

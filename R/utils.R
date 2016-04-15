@@ -20,6 +20,9 @@ convert_ambiguous_matrix <- function(mat){
   if (!all_true(rownames(mat) %in% c(base_letters,amb_letters))){
     stop("Input matrix must only consist of valid DNA letters (includes IUPAC ambiguous codes)")
   }
+  if (!all_true(as.vector(mat >= 0))){
+    stop("If ambiguous letters used, matrix must not contain negative values.")
+  }
   if (!all_true(base_letters %in% rownames(mat))){
     missing <- base_letters[which(base_letters %ni% rownames(mat))]
     mat <- rbind(mat, matrix(0, nrow = length(missing), ncol = ncol(mat), dimnames = list(missing, NULL)))
