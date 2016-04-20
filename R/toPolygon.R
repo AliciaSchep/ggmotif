@@ -18,14 +18,19 @@ matrixToPolygons <- function(x,
     nz = which(x[,i]!=0)
     tmpy = -sum(abs(x[which(x[,i]<0),i]))
     for (j in nz[sort(x[nz,i], index.return=T)$ix]){
-      tmpht = ht * abs(x[j,i])
+      tmpht = ht * x[j,i]
+      if (x[j,i] < 0){
+        tmpypos = y.pos + tmpy - tmpht
+      } else{
+        tmpypos = y.pos + tmpy
+      }
       out = rbind(out, makeLetter(letters[j],
                                   x.pos= x.pos + (i - 0.5) * wt,
-                                  y.pos = y.pos + tmpy,
+                                  y.pos = tmpypos,
                                   ht = tmpht,
                                   wt = wt* 0.98,
                                   id = paste0(id,as.character(i))))
-      tmpy = tmpy + tmpht
+      tmpy = tmpy + abs(tmpht)
     }
   }
   out
