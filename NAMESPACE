@@ -3,4 +3,5 @@
 export(ggmotif)
 export(ggmotif_plot)
 export(ggmotif_scale)
+export(ggmotif_theme)
 import(ggplot2)
