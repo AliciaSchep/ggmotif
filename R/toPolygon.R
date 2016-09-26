@@ -8,6 +8,9 @@ matrixToPolygons <- function(x,
                              ht = 1,
                              wt = 1,
                              id = ""){
+  if (inherits(x, "XMatrix")){
+    x <- TFBSTools::Matrix(x)
+  }
   stopifnot(ncol(x) >= 1)
   if (nrow(x) > 4){
     x = convert_ambiguous_matrix(x)
