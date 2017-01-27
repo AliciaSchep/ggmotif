@@ -9,7 +9,9 @@ Authors@R: c(
 Description: Plot motifs using ggplot framework.  Add motifs to a ggplot.
 License: MIT + file LICENSE
 Imports:
-  Biostrings,
-  RColorBrewer
+    Biostrings,
+    RColorBrewer,
+    TFBSTools
 Depends:
-  ggplot2
+    ggplot2
+RoxygenNote: 5.0.1

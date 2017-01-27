@@ -1,4 +1,4 @@
-#'ggmotif_plot
+#'ggmotif
 #'
 #'@param x either a character string, a \code{\link[Biostrings]{DNAString}} object, or a matrix
 #'@param x.pos position on x axis for bottom left corner of motif
@@ -11,7 +11,7 @@
 #'@import ggplot2
 #'@export
 #'@examples
-#'ggplot() + ggmotif("ACG",x.pos = 5,y.pos = 2) + ggmotif_scale()
+#' ggplot() + ggmotif("ACG",x.pos = 5,y.pos = 2) + ggmotif_scale()  + ggmotif_theme()
 ggmotif <- function(x,
                     x.pos = 0,
                     y.pos = 0,
@@ -33,13 +33,14 @@ ggmotif <- function(x,
                                 wt = wt,
                                 id = id)
   }
+  motif_df$fill <- factor(motif_df$fill,
+                          levels = c("A","C","G","T"),
+                          ordered=TRUE )
   geom_polygon(data = motif_df,
-               mapping = aes(x=x,
-                             y=y,
-                             fill = factor(fill,
-                                           levels = c("A","C","G","T"),
-                                           ordered=TRUE),
-                             group = id))
+               mapping = aes_string(x="x",
+                             y="y",
+                             fill = "fill",
+                             group = "id"))
 }
 
 #'ggmotif_scale
