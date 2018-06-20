@@ -21,6 +21,8 @@ Inspired by, and letters based on, seqLogo Bioconductor package.
 
 Plots DNA sequence motif in ggplot2 framework.
 
+Install using `devtools::install_github` (Not on CRAN).
+
 Either create a standalone plot, or add a sequence logo at a specific position with a specific size into a ggplot.
 
 ```{r}
